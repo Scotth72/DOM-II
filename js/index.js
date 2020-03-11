@@ -11,31 +11,40 @@ document.querySelectorAll(`nav a`).forEach(item => {
 document.querySelector(`nav`).addEventListener(`click`,() => {
     console.log(`the nav got clicked`);
 })
-//keydown
-//const mainNav = document.querySelector(`.main-navigation`).addEventListener(`keydown`, event) {
 
-//}
+const topLine = document.querySelector('header h2')
 
-//wheel
-//document.querySelector(`logo-heading`).
-
-//drag / drop
-
-//load
-
-//focus
-
-//resize
-
-const windowSize = document.querySelector(`main-navigation`)
-window.addEventListener(`resize`, () => {
-    windowSize.textContent = ``
+window.addEventListener('scroll', () => {
+    topLine.textContent = 'You are scrolling down the Page'
 })
-//scroll
 
-//select
+const funLogo = document.querySelector(`.logo-heading`)
 
-//dblclick
+funLogo.addEventListener(`dblclick`, () => {
+    funLogo.style.backgroundColor = `blue`
+})
 
-
-
+funLogo.addEventListener(`mousedown`, () => {
+    funLogo.textContent = `It is moving Down`
+})
+funLogo.addEventListener(`mouseup`, () => {
+    funLogo.textContent = `Fun Bus`
+})
+const welcomeIntro = document.querySelector(`.intro p`)
+welcomeIntro.addEventListener(`mouseover`, () => {
+    welcomeIntro.style.backgroundColor = `purple`
+})
+welcomeIntro.addEventListener(`mouseout`, () => {
+    welcomeIntro.style.backgroundColor = `white`
+})
+const placeWheel = document.querySelectorAll(`.btn`)
+let scale = 1;
+function zoom(placeWheel) {
+    placeWheel.preventDefault();
+    scale += placeWheel.deltaY * -0.01;
+    scale = Math.min(Math.max(.125, scale), 4);
+    placeWheel.style.transform = `scale(${scale})`;
+    placeWheel.addEventListener('wheel', zoom);
+  }
+  
+  placeWheel.onwheel = zoom;
