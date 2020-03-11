@@ -37,14 +37,10 @@ welcomeIntro.addEventListener(`mouseover`, () => {
 welcomeIntro.addEventListener(`mouseout`, () => {
     welcomeIntro.style.backgroundColor = `white`
 })
-const placeWheel = document.querySelectorAll(`.btn`)
-let scale = 1;
-function zoom(placeWheel) {
-    placeWheel.preventDefault();
-    scale += placeWheel.deltaY * -0.01;
-    scale = Math.min(Math.max(.125, scale), 4);
-    placeWheel.style.transform = `scale(${scale})`;
-    placeWheel.addEventListener('wheel', zoom);
-  }
-  
-  placeWheel.onwheel = zoom;
+const stopLink = document.querySelector(`.nav-link`)
+
+stopLink.addEventListener('click', function(e){
+e.preventDefault();
+console.log(`navigation to`, e.target.textContent, `was prevented`)
+
+})
